@@ -3,6 +3,10 @@ CIPHERNAMES = set(('aes-128-ctr',))
 
 import os
 import sys
+from ethereum.slogging import get_logger
+
+log = get_logger('p2p.crypto')
+
 if sys.platform not in ('darwin',):
     import pyelliptic
 else:
@@ -17,10 +21,10 @@ else:
             if CIPHERNAMES.issubset(set(pyelliptic.Cipher.get_all_cipher())):
                 break
 if 'pyelliptic' not in dir() or not CIPHERNAMES.issubset(set(pyelliptic.Cipher.get_all_cipher())):
-    print 'required ciphers %r not available in openssl library' % CIPHERNAMES
+    log.fatal('required ciphers %r not available in openssl library', CIPHERNAMES)
     if sys.platform == 'darwin':
-        print 'use homebrew or macports to install newer openssl'
-        print '> brew install openssl / > sudo port install openssl'
+        log.fatal('use homebrew or macports to install newer openssl')
+        log.fatal('> brew install openssl / > sudo port install openssl')
     sys.exit(1)
 
 import bitcoin

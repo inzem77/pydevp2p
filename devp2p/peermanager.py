@@ -206,9 +206,9 @@ class PeerErrors(object):
 
         def report():
             for k, v in self.errors.items():
-                print k, self.client_versions.get(k, '')
+                log.error('%s %s', k, self.client_versions.get(k, ''))
                 for e in v:
-                    print '\t', e
+                    log.error('\t %s', e)
 
         atexit.register(report)
 

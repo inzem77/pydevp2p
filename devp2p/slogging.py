@@ -2,7 +2,7 @@ import logging
 try:
     from ethereum.slogging import get_logger, configure
 except ImportError:
-    print 'could not import slogging'
+    log.error('could not import slogging')
     # patch logging to support kargs
     _log_orig = logging.Logger._log
 
