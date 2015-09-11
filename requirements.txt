@@ -12,4 +12,4 @@ coverage
 tox
 pycrypto
 https://github.com/ethereum/pyrlp/tarball/develop
-https://github.com/ethereum/pyethereum/tarball/develop
+https://github.com/ethereum/pyethereum/tarball/develop#egg=ethereum
