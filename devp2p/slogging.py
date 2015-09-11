@@ -2,6 +2,7 @@ import logging
 try:
     from ethereum.slogging import get_logger, configure
 except ImportError:
+    log = logging.getLogger('p2p.slogging')
     log.error('could not import slogging')
     # patch logging to support kargs
     _log_orig = logging.Logger._log
