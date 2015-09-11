@@ -3,9 +3,9 @@ CIPHERNAMES = set(('aes-128-ctr',))
 
 import os
 import sys
-from ethereum.slogging import get_logger
+import slogging
 
-log = get_logger('p2p.crypto')
+log = slogging.get_logger('p2p.crypto')
 
 if sys.platform not in ('darwin',):
     import pyelliptic
